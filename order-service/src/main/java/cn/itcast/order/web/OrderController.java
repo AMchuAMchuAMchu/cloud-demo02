@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.sound.midi.Soundbank;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("order")
@@ -42,6 +43,11 @@ public class OrderController {
 
     @GetMapping("/update")
     public String updateOrder(){
+        try {
+            TimeUnit.MILLISECONDS.sleep(60);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return "更新订单成功!!";
     }
 

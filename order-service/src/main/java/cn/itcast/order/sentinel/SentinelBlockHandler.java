@@ -29,11 +29,11 @@ public class SentinelBlockHandler implements BlockExceptionHandler {
             msg = "请求被限流了!!";
         }else if (e instanceof DegradeException){
             msg = "请求被降级了!!";
-        }else if (e instanceof ParamFlowException){
-            msg = "热点参数被限流了!!";
         }else if (e instanceof AuthorityException){
             msg = "请求没有权限!!";
             status = 401;
+        }else if (e instanceof Throwable){
+            msg = msg;
         }
 
         httpServletResponse.setContentType("text/html;charset=utf-8");
